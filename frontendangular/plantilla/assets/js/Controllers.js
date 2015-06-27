@@ -25,21 +25,21 @@ miapp.controller('DRF', function($scope, $http) {
             $scope.name = response;
         });
 
-   $scope.getitem=function(){
-
-       $http.get("http://calm-refuge-6071.herokuapp.com/api/296")
+   $scope.getitem=function(item){
+       $http.get(url+"/api/colegio/"+item)
            .success(function(response){
-               $scope.codigo =response.id;
-               $scope.nombre =response.description;
-               $scope.telefono =response.done;
-            alert($scope.codigo + $scope.nombre + $scope.telefono)
+                
+               $scope.cod =response.codigo;
+               $scope.nom =response.nombre;
+               $scope.tel =response.telefono;
+               $scope.dir=response.direccion;
+               $scope.est=response.estado;
+                alert($scope.nom);
            });
 
    };
 
-    $scope.eliminar=function(item){
-
-    }
+ 
 });
 
 miapp.controller('alerta', function($scope) {
