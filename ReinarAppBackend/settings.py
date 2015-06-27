@@ -25,7 +25,7 @@ SECRET_KEY = '3vlvg51w7gurqsz+6f!2+@b(k#-*u42)4x%+cy+4wwc#kyae)&'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -62,7 +62,7 @@ ROOT_URLCONF = 'ReinarAppBackend.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(os.path.dirname(__file__),'../plantilla'),],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -106,5 +106,5 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
-STATIC_URL = '/assets/'
-STATICFILES_DIRS = (os.path.join(BASE_DIR, 'plantilla/assets'),)
+STATIC_URL = '/static/'
+STATICFILES_DIRS = ()
