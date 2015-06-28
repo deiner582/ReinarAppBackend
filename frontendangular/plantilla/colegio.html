@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/html">
+<html lang="en">
 	<head>
-		<title>ReinarApp</title>
+		<title>Material Admin - Message</title>
 
 		<!-- BEGIN META -->
 		<meta charset="utf-8">
@@ -20,14 +20,14 @@
 
 		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!--[if lt IE 9]>
-		<script type="text/javascript" src="assets/js/libs/utils/html5shiv.js?1403934957"></script>
-		<script type="text/javascript" src="assets/js/libs/utils/respond.min.js?1403934956"></script>
+		<script type="text/javascript" src="../../assets/js/libs/utils/html5shiv.js?1403934957"></script>
+		<script type="text/javascript" src="../../assets/js/libs/utils/respond.min.js?1403934956"></script>
 		<![endif]-->
 	</head>
-	<body class="menubar-hoverable header-fixed " ng-app="MyApp">
+	<body class="menubar-hoverable header-fixed menubar-first full-content" ng-app="MyApp">
 
 		<!-- BEGIN HEADER-->
-		<header id="header" >
+<header id="header" >
 			<div class="headerbar">
 				<!-- Brand and toggle get grouped for better mobile display -->
 				<div class="headerbar-left">
@@ -36,9 +36,7 @@
 							<div class="brand-holder">
 								<a href="../../html/dashboards/dashboard.html">
 									<span class="text-lg text-bold text-primary">ReinarAR ADMIN</span>
-                                    <div ng-view>
-                                        
-                                    </div>
+                                 >
 								</a>
 							</div>
 						</li>
@@ -77,21 +75,15 @@
 
 			<!-- BEGIN CONTENT-->
 			<div id="content">
-				<section>
-					<div class="section-header">
-						<ol class="breadcrumb">
-							<li class="active">Datos</li>
-						</ol>
-					</div>
-					<div class="section-body contain-lg">
+				<section class="has-actions style-default-bright">
 
-						<!-- BEGIN INTRO -->
-  <div ng-controller="DRF">
+					<!-- END EMAIL MESSAGE -->
+                     <div ng-controller="DRF">
+                    <div class="section-body"> 
+                       
 
-
-
-						<!-- BEGIN DARK TABLE -->
-						<div class="row">
+                        
+<div class="row">
 							<div class="col-lg-12">
 								<h4>Colegios</h4>
 							</div><!--end .col -->
@@ -122,7 +114,10 @@
 													<td>{{ x.nombre }}</td>
 													<td>{{ x.direccion }}</td>
 													<td>{{ x.telefono }}</td>
-                                                    <td><a class="btn ink-reaction btn-icon-toggle"  data-placement="top" data-original-title="Delete mail" data-toggle="modal"  ng-click="getitem(x.codigo)">
+                                                    
+                                                    <td>
+                                                       
+                                                        <a class="btn ink-reaction btn-icon-toggle"  data-placement="top" data-original-title="Delete mail"  data-ng-click="getitem(x.codigo)">
 								<span class="md md-open-in-new"></span>
 							</a>
                                                     </td>
@@ -146,28 +141,10 @@
 									</div><!--end .card-body -->
 								</div><!--end .card -->
 
-							</div><!--end .col -->
-						</div><!--end .row -->
-
-                 			<!-- END DARK TABLE -->
-
-
-
-				</section>
-                <div class="section-body contain-lg">
-                <div class="section-action style-primary">
-
-						<div class="section-floating-action-row">
-							<a class="btn ink-reaction btn-floating-action btn-lg btn-accent"  data-placement="top"  data-toggle="modal" data-target="#formModal">
-								<i class="md md-add"></i>
-							</a>
-						</div>
-    </div>
-</div>
-				<!-- BEGIN TABLE HOVER -->
-
-			</div>
-<!-- BEGIN FORM MODAL MARKUP -->
+							</div><!--end .row -->
+                            
+				</div>
+                    <!-- BEGIN FORM MODAL MARKUP -->
 
 <div class="modal fade" id="simpleModal" tabindex="-1" role="dialog" aria-labelledby="simpleModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
@@ -177,7 +154,7 @@
 				<h4 class="modal-title" id="simpleModalLabel">Eliminar</h4>
 			</div>
 			<div class="modal-body">
-				<p>Esta seguro que quiere eliminar este colegio {{ cod }}?</p>
+				<p>Esta seguro que quiere eliminar este colegio {{ codigo }}?</p>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">No</button>
@@ -185,11 +162,64 @@
 			</div>
 		</div><!-- /.modal-content -->
 	</div><!-- /.modal-dialog -->
-    </div>
-<!-- /.modal -->
-                
+</div><!-- /.modal -->
 
+                                        <!-- BEGIN FORM MODAL MARKUP -->
 
+<div class="modal fade" id="detalleModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="formModalLabel">Detalle Colegio</h4>
+			</div>
+			<form class="form-horizontal" role="form">
+				<div class="modal-body">
+					<div class="form-group">
+						<div class="col-sm-3">
+							<label for="email1" class="control-label">Codigo</label>
+						</div>
+						<div class="col-sm-9">
+							<input type="text" name="email1" id="email1" class="form-control" placeholder="{{ Colegio.codigo  }}" disabled>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-3">
+							<label for="password1" class="control-label">Nombre</label>
+						</div>
+						<div class="col-sm-9">
+							<input type="text" name="password1" id="password1" class="form-control" placeholder="{{ Colegio.nombre  }} " disabled>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-3">
+							<label for="password1" class="control-label">Direccion</label>
+						</div>
+						<div class="col-sm-9">
+							<input type="text" name="password1" id="password1" class="form-control"placeholder="{{ Colegio.direccion  }} " disabled>
+						</div>
+					</div>
+
+                    	<div class="form-group">
+						<div class="col-sm-3">
+							<label for="password1" class="control-label">Telefono</label>
+						</div>
+						<div class="col-sm-9">
+							<input type="text" name="password1" id="password1" class="form-control" placeholder="{{ Colegio.telefono  }} " disabled>
+						</div>
+					</div>
+
+				</div>
+				<div class="modal-footer">
+					
+				</div>
+			</form>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+                         
+</div><!--end controller -->
+                    
 <!-- BEGIN FORM MODAL MARKUP -->
 <div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
@@ -243,9 +273,23 @@
 	</div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 <!-- END FORM MODAL MARKUP -->
+                    
+					<!-- BEGIN SECTION ACTION -->
+                    
+                    <div ng-controller="DRF">
+                  
+					<div class="section-action style-primary">
+						<div class="section-floating-action-row">
+							<a class="btn ink-reaction btn-floating-action btn-lg btn-accent"  data-placement="top"  data-toggle="tooltip" data-original-title="Agregar" ng-click="add()">
+								<i class="md md-add"></i>
+							</a>
+						</div>
+					</div>
+                          </div><!--end .section-action -->
+					<!-- END SECTION ACTION -->
 
-
-            <!--end #content-->
+				</section>
+			</div><!--end #content-->
 			<!-- END CONTENT -->
 
 			<!-- BEGIN MENUBAR-->
@@ -258,7 +302,7 @@
 					</div>
 					<div class="expanded">
 						<a href="../../html/dashboards/dashboard.html">
-							<span class="text-lg text-bold text-primary ">ReinAR &nbsp;ADMIN</span>
+							<span class="text-lg text-bold text-primary ">MATERIAL&nbsp;ADMIN</span>
 						</a>
 					</div>
 				</div>
@@ -299,16 +343,15 @@
 
 					<div class="menubar-foot-panel">
 						<small class="no-linebreak hidden-folded">
-							<span class="opacity-75">Copyright &copy; 2015</span> <strong>ReinarApp</strong>
+							<span class="opacity-75">Copyright &copy; 2014</span> <strong>CodeCovers</strong>
 						</small>
 					</div>
 				</div><!--end .menubar-scroll-panel-->
 			</div><!--end #menubar-->
 			<!-- END MENUBAR -->
 
-
-			</div><!--end .offcanvas-->
-			<!-- END OFFCANVAS RIGHT -->
+			<!-- BEGIN OFFCANVAS RIGHT -->
+			
 
 		</div><!--end #base-->
 		<!-- END BASE -->

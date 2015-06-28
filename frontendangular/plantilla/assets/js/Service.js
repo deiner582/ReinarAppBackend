@@ -1,40 +1,28 @@
-app.service("SinglePageCRUDService", function ($http) {
-    var uri="http://190.109.185.138:8034";
-    //Function to Read All Employees
-    this.getEmployees = function () {
-        return $http.get(uri+"/api/Employee");
+app.service("ColegioService", function ($http) {
+    var url="https://reinarbackend.herokuapp.com";
+    
+    this.getitem = function (item) {
+        var req = $http.get(url+"/api/colegio/"+ item);
+        return req;
     };
-    //Fundction to Read Employee based upon id
-    this.getEmployee = function (id) {
-        return $http.get(uri+"/api/Employee/" + id);
+    
+    this.getall = function () {
+        var req = $http.get(url+"/api/colegio/");
+        return req;
     };
-
-    //Function to create new Employee
-    this.post = function (Employee) {
-        var request = $http({
-            method: "post",
-            url: uri+"/api/Employee",
-            data: Employee
-        });
-        return request;
+    
+    this.post = function (colegio) {
+        var req = $http.post(url+'/api/colegio/', colegio);
+        return req;
     };
-
-    //Function  to Edit Employee based upon id 
-    this.put = function (id, Employee) {
+    
+    this.put = function (cod,colegio) {
         var request = $http({
             method: "put",
-            url: uri+"/api/Employee/" + id,
-            data: Employee
+            url: url+'/api/colegio/'+ cod,
+            data: colegio
         });
         return request;
     };
-
-    //Function to Delete Employee based upon id
-    this.delete = function (id) {
-        var request = $http({
-            method: "delete",
-            url: uri+"/api/Employee/" + id
-        });
-        return request;
-    };
+    
 });

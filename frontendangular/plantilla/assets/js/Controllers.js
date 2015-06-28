@@ -19,23 +19,38 @@ miapp.controller('json1', function($scope, $http) {
 });
 
 miapp.controller('DRF', function($scope, $http) {
-    var url="https://reinarbackend.herokuapp.com";
-    $http.get(url+"/api/colegio/")
+    $scope.Colegio = {}; //Objeto Actual
+    var url="https://reinarbackend.herokuapp.com/api/colegio/";
+
+    $http.get(url)
     .success(function(response) {
             $scope.name = response;
         });
-
+   
    $scope.getitem=function(item){
-       $http.get(url+"/api/colegio/"+item)
+       $http.get(url+item)
+           
            .success(function(response){
-                
-               $scope.cod =response.codigo;
-               $scope.nom =response.nombre;
-               $scope.tel =response.telefono;
-               $scope.dir=response.direccion;
-               $scope.est=response.estado;
-                alert($scope.nom);
+              
+               $scope.Colegio.codigo =response.codigo;
+               $scope.Colegio.nombre =response.nombre;
+               $scope.Colegio.telefono =response.telefono;
+               $scope.Colegio.direccion=response.direccion;
+               $scope.Colegio.estado=response.estado;
+               $('#detalleModal').modal('show');
+           
            });
+
+   };
+  
+      $scope.add=function(){ 
+        $('#formModal').modal('show');  
+       $scope.Colegio.codigo ="c3";
+        $scope.Colegio.nombre ="hola";
+        $scope.Colegio.telefono =565656;
+        $scope.Colegio.direccion="calle falsa 123";
+        $scope.Colegio.estado="Moroso";
+        $http.post(url,$scope.Colegio);
 
    };
 
@@ -48,31 +63,4 @@ miapp.controller('alerta', function($scope) {
             alert($scope.mensaje);
         };
 
-});
-
-miapp.controller('AddEmployeeController', function ($scope, SinglePageCRUDService) {
-    $scope.EmpNo = 0;
-    //The Save scope method used to define the Employee object and
-    //post the Employee information to the server by making call to the Service
-    $scope.save = function () {
-        var Employee = {
-            EmpNo: $scope.EmpNo,
-            EmpName: $scope.EmpName,
-            Salary: $scope.Salary,
-            DeptName: $scope.DeptName,
-            Designation: $scope.Designation
-        };
-
-        var promisePost = SinglePageCRUDService.post(Employee);
-
-
-        promisePost.then(function (pl) {
-            $scope.EmpNo = pl.data.EmpNo;
-            alert("EmpNo " + pl.data.EmpNo);
-        },
-              function (errorPl) {
-                  $scope.error = 'failure loading Employee', errorPl;
-              });
-
-    };
 });
