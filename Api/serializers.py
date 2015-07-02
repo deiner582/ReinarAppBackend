@@ -1,5 +1,5 @@
 from rest_framework.serializers import ModelSerializer
-from .models import Colegio,Estudiante,Puntuacion,Docente
+from .models import Colegio,Estudiante,Puntuacion,Docente,User
 class ColegioSerialerzs(ModelSerializer):
     class Meta:
         model= Colegio
@@ -19,3 +19,8 @@ class PuntuacionSerialerzs(ModelSerializer):
     class Meta:
         model= Puntuacion
         fields=('estudiante','puntuacion','fecha')
+
+class UsuarioSerialerzs(ModelSerializer):
+    class Meta:
+        model= User
+        fields = ('username','password')

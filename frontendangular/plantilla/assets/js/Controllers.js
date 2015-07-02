@@ -42,16 +42,43 @@ miapp.controller('DRF', function($scope, $http) {
            });
 
    };
-  
-      $scope.add=function(){ 
-        $('#formModal').modal('show');  
-       $scope.Colegio.codigo ="c3";
-        $scope.Colegio.nombre ="hola";
-        $scope.Colegio.telefono =565656;
-        $scope.Colegio.direccion="calle falsa 123";
-        $scope.Colegio.estado="Moroso";
-        $http.post(url,$scope.Colegio);
+    
+    $scope.showmodal=function(){ 
+    $('#formModal').modal('show');
+        
+    };
 
+   $scope.showdelete=function(item){ 
+    $('#simpleModal').modal('show');  
+        $http.get(url+item)
+           
+           .success(function(response){
+              
+               $scope.Colegio.codigo =response.codigo;
+               
+      });
+    };
+    
+    $scope.delete=function(){ 
+        var cod=$scope.Colegio.codigo;
+     
+     $http.delete(url+cod+"/")
+     
+     .success(function(){
+     $('#simpleModal').modal('hide');  
+     });
+    };
+    
+    
+    $scope.add=function(){ 
+        var colegio = {};
+          colegio.codigo=$scope.Colegio.codigo;
+          colegio.nombre=$scope.Colegio.nombre;
+          colegio.telefono=$scope.Colegio.telefono;
+          colegio.direccion=$scope.Colegio.direccion;
+          colegio.estado="Moroso";
+        $http.post(url,colegio);
+    $('#formModal').modal('hide');  
    };
 
  
