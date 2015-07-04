@@ -41,6 +41,20 @@ class Persona(models.Model):
     def __unicode__(self):
         return  self.primer_nombre + " "+self.primer_apellido+" "+self.segundo_apellido
 
+    # crear un usuario a una persona automaticamente
+    def save(self, *args, **kwargs):
+        nombre_usuario=self.primer_nombre[0].lower()+self.segundo_nombre[0].lower()+self.primer_apellido.lower()
+        user = User(username=nombre_usuario, password=str(self.documento))
+        user.is_staff = True
+        user.is_superuser = False
+        user.save()
+        self.usuario= user
+        super(Persona, self).save(*args, **kwargs)
+
+    #eliminar el usuario asociado a la persona
+    def delete(self):
+         user=User.objects.get(username=self.usuario)
+         user.delete()
 
 class Estudiante(Persona):
     Grado=(
@@ -59,6 +73,7 @@ class Puntuacion(models.Model):
 
     def __unicode__(self):
         return str(self.puntuacion)
+
 class Docente(Persona):
 
     def __unicode__(self):
