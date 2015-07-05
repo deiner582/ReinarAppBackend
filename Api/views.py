@@ -137,29 +137,3 @@ class PuntuacionApi(APIView):
         puntuacion.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
-class UsuarioApi(APIView):
-    serializer_class= UsuarioSerialerzs
-    def get(self,request,username=None,format=None):
-        muchos = False
-        if username != None:
-            user= get_object_or_404(User,pk=username)
-        else:
-            muchos = True
-            user= User.objects.all()
-        response=self.serializer_class(user,many=muchos)
-        return Response(response.data)
-
-    def post(self, request, format=None):
-        serializer = self.serializer_class(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-    def put(self, request, username, format=None):
-        user =  get_object_or_404(User,pk=username)
-        serializer = self.serializer_class(user, data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

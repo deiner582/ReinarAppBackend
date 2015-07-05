@@ -20,12 +20,13 @@ class Migration(migrations.Migration):
                 ('direccion', models.CharField(max_length=100)),
                 ('telefono', models.IntegerField()),
                 ('estado', models.CharField(default=b'Moroso', max_length=12, choices=[(b'Paz y salvo', b'Paz y salvo'), (b'Moroso', b'Moroso')])),
+                ('usuario', models.ForeignKey(blank=True, to=settings.AUTH_USER_MODEL, null=True)),
             ],
         ),
         migrations.CreateModel(
             name='Persona',
             fields=[
-                ('tipo_documento', models.CharField(max_length=20, choices=[(b'C.C', b'Cedula de ciudadania'), (b'T.I', b'Tarjeta de identidad'), (b'C.E', b'Cedula Extranjera'), (b'Registro Civil', b'Registro Civil')])),
+                ('tipo_documento', models.CharField(max_length=20, choices=[(b'Cedula de ciudadania', b'Cedula de ciudadania'), (b'Tarjeta de identidad', b'Tarjeta de identidad'), (b'Cedula Extranjera', b'Cedula Extranjera'), (b'Registro Civil', b'Registro Civil')])),
                 ('documento', models.IntegerField(serialize=False, primary_key=True)),
                 ('primer_nombre', models.CharField(max_length=50)),
                 ('segundo_nombre', models.CharField(max_length=50, null=True)),
@@ -67,7 +68,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='persona',
             name='usuario',
-            field=models.ForeignKey(null=True, blank=True, to=settings.AUTH_USER_MODEL, unique=True),
+            field=models.ForeignKey(blank=True, to=settings.AUTH_USER_MODEL, null=True),
         ),
         migrations.AddField(
             model_name='puntuacion',
