@@ -28,6 +28,7 @@ class DocenteSerialerzs(ModelSerializer):
         fields=('tipo_documento','documento','primer_nombre','segundo_nombre','primer_apellido','segundo_apellido','sexo','fecha_nacimiento','usuario','correo','colegio')
 
 class PuntuacionSerialerzs(ModelSerializer):
+    estudiante=EstudianteSerialerzs(many=False,read_only=True)
     class Meta:
         model= Puntuacion
         fields=('estudiante','puntuacion','fecha')
