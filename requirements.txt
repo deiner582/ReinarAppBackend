@@ -1,0 +1,8 @@
+Django
+argparse
+django-admin-bootstrapped
+django-debug-toolbar
+django-material
+djangorestframework
+sqlparse
+wsgiref
