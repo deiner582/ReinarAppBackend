@@ -1,0 +1,32 @@
+[
+    {
+        "tipo_documento": "Cedula de ciudadania",
+        "documento": 7237237,
+        "primer_nombre": "deiner",
+        "segundo_nombre": "jose",
+        "primer_apellido": "restrepo",
+        "segundo_apellido": "duran",
+        "sexo": "M",
+        "fecha_nacimiento": "2016-10-31",
+        "usuario": {
+            "username": "djrestrepo",
+            "password": "pbkdf2_sha256$30000$alCY22KU8xrs$5ICxYR49xkdSpLccZ6keXs15E4FT+rYX74Eu0Z1EiUU="
+        },
+        "correo": ""
+    },
+    {
+        "tipo_documento": "Cedula de ciudadania",
+        "documento": 23234556,
+        "primer_nombre": "dfdfdf",
+        "segundo_nombre": "dfdf",
+        "primer_apellido": "dfdf",
+        "segundo_apellido": "dfdfdf",
+        "sexo": "M",
+        "fecha_nacimiento": "2016-11-05",
+        "usuario": {
+            "username": "dddfdf",
+            "password": "pbkdf2_sha256$30000$KQDVQq2ALesb$yRxC36TqhA/SRvmSXNq9MWmcOd4eZsFRN6fPe0mFQ0c="
+        },
+        "correo": "jdjd@hotmail.com"
+    }
+]
