@@ -1,0 +1,26 @@
+[
+    {
+        "pregunta": "¿ que  animal es el mas grande?",
+        "opciones": [
+            "Ballena",
+            "Elefante",
+            "Pulga",
+            "Cebra"
+        ],
+        "respuesta": "Ballena",
+        "tematica": 1,
+        "docente": 7237237
+    },
+    {
+        "pregunta": "¿ que plantas no es comestible?",
+        "opciones": [
+            "Ballena",
+            "Elefante",
+            "Pulga",
+            "Cebra"
+        ],
+        "respuesta": "Elefante",
+        "tematica": 2,
+        "docente": 7237237
+    }
+]
